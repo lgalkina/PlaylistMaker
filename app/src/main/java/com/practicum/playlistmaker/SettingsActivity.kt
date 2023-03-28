@@ -3,6 +3,7 @@ package com.practicum.playlistmaker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +13,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun createSettingsBackButton() {
-        val button = findViewById<Button>(R.id.settings_back)
-        button.setOnClickListener {
+        val imageView = findViewById<ImageView>(R.id.settings_back)
+        imageView.setOnClickListener {
             finish()
         }
     }
