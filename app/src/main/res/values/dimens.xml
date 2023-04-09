@@ -2,5 +2,4 @@
 <resources>
     <dimen name="text_22">22sp</dimen>
     <dimen name="text_16">16sp</dimen>
-    <dimen name="menu_button_radius">16dp</dimen>
 </resources>

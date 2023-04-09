@@ -17,11 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun createSearchButton() {
         val button = findViewById<Button>(R.id.search)
-        val clickListener: View.OnClickListener = object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val intent = Intent(applicationContext, SearchActivity::class.java)
-                startActivity(intent)
-            }
+        val clickListener: View.OnClickListener = View.OnClickListener {
+            val intent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(intent)
         }
         button.setOnClickListener(clickListener)
     }

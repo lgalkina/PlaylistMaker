@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/main_menu_page">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,25 +14,25 @@
         android:text="@string/app_name"
         android:textSize="@dimen/text_22"
         android:textColor="@color/white"
+        android:fontFamily="@font/ys_display_medium"
+        android:textFontWeight="500"
         android:paddingBottom="40dp"
         android:paddingTop="14dp"
         android:paddingStart="16dp"
+        android:background="@android:color/transparent"
         tools:ignore="RtlSymmetry" />
 
-    <Button
-        android:id="@+id/search"
+    <Button android:id="@+id/search"
         style="@style/main_menu_button"
         android:text="@string/search"
         app:icon="@drawable/search" />
 
-    <Button
-        android:id="@+id/media_library"
+    <Button android:id="@+id/media_library"
         style="@style/main_menu_button"
         android:text="@string/media_library"
         app:icon="@drawable/media_library" />
 
-    <Button
-        android:id="@+id/settings"
+    <Button android:id="@+id/settings"
         style="@style/main_menu_button"
         android:text="@string/settings"
         app:icon="@drawable/settings" />
