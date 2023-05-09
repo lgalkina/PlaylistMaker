@@ -9,21 +9,31 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.practicum.playlistmaker.track.TracksAdapter
+import com.practicum.playlistmaker.track.getTracksMockData
 
 class SearchActivity : AppCompatActivity() {
 
-    companion object {
+    private companion object {
         const val SEARCH_TEXT = "SEARCH_TEXT"
     }
 
-    var currentSearchText = ""
+    private var currentSearchText = ""
+    private lateinit var searchEditText: EditText
+    private lateinit var clearSearchButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        createBackButton()
-        createSearchEditText()
-        createSearchClearButton()
+
+        searchEditText = findViewById(R.id.search_edit_text)
+        clearSearchButton = findViewById(R.id.search_clear)
+
+        setUpBackButton()
+        setUpSearchEditText()
+        setUpSearchClearButton()
+        setUpSearchRecyclerView()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -33,20 +43,17 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val editText = findViewById<EditText>(R.id.search_edit_text)
-        editText.setText(savedInstanceState.getString(SEARCH_TEXT,""))
+        searchEditText.setText(savedInstanceState.getString(SEARCH_TEXT,""))
     }
 
-    private fun createBackButton() {
+    private fun setUpBackButton() {
         val imageView = findViewById<ImageView>(R.id.search_back)
         imageView.setOnClickListener {
             finish()
         }
     }
 
-    private fun createSearchEditText() {
-        val searchEditText = findViewById<EditText>(R.id.search_edit_text)
-        val clearSearchButton = findViewById<ImageView>(R.id.search_clear)
+    private fun setUpSearchEditText() {
         searchEditText.requestFocus()
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -65,9 +72,7 @@ class SearchActivity : AppCompatActivity() {
         searchEditText.addTextChangedListener(textWatcher)
     }
 
-    private fun createSearchClearButton() {
-        val clearSearchButton = findViewById<ImageView>(R.id.search_clear)
-        val searchEditText = findViewById<EditText>(R.id.search_edit_text)
+    private fun setUpSearchClearButton() {
         val clickListener: View.OnClickListener = View.OnClickListener {
             searchEditText.text.clear()
             val imm: InputMethodManager =
@@ -75,5 +80,11 @@ class SearchActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(searchEditText.windowToken, 0)
         }
         clearSearchButton.setOnClickListener(clickListener)
+    }
+
+    private fun setUpSearchRecyclerView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.search_recyclerView)
+        val tracksAdapter = TracksAdapter(getTracksMockData())
+        recyclerView.adapter = tracksAdapter
     }
 }

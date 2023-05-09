@@ -10,12 +10,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        createSearchButton()
-        createMediaLibraryButton()
-        createSettingsButton()
+        setUpSearchButton()
+        setUpMediaLibraryButton()
+        setUpSettingsButton()
     }
 
-    private fun createSearchButton() {
+    private fun setUpSearchButton() {
         val button = findViewById<Button>(R.id.search)
         val clickListener: View.OnClickListener = View.OnClickListener {
             val intent = Intent(applicationContext, SearchActivity::class.java)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener(clickListener)
     }
 
-    private fun createMediaLibraryButton() {
+    private fun setUpMediaLibraryButton() {
         val button = findViewById<Button>(R.id.media_library)
         button.setOnClickListener {
             val intent = Intent(this, MediaLibraryActivity::class.java)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createSettingsButton() {
+    private fun setUpSettingsButton() {
         val button = findViewById<Button>(R.id.settings)
         button.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
