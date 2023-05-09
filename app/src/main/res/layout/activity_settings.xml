@@ -1,50 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="14dp"
-        android:paddingStart="20dp"
-        android:paddingBottom="40dp"
-        tools:ignore="RtlSymmetry">
+    <LinearLayout style="@style/page_title_layout"
+        android:paddingBottom="40dp">
 
-        <ImageView
-            android:id="@+id/settings_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_back"
-            android:layout_gravity="start" />
+        <ImageView android:id="@+id/settings_back"
+            style="@style/page_back_image"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="28dp"
-            android:layout_gravity="end"
-            android:text="@string/settings"
-            android:textSize="@dimen/text_22"
-            android:textColor="@color/black" />
+        <TextView style="@style/page_title"
+            android:text="@string/settings"/>
     </LinearLayout>
 
-    <androidx.appcompat.widget.SwitchCompat
-        style="@style/settings_menu"
+    <androidx.appcompat.widget.SwitchCompat android:id="@+id/dark_theme"
+        style="@style/settings_menu_item"
         android:text="@string/dark_theme" />
 
-    <TextView style="@style/settings_menu"
+    <TextView android:id="@+id/share"
+        style="@style/settings_menu_item"
         android:text="@string/share"
         app:drawableEndCompat="@drawable/share"/>
 
-    <TextView style="@style/settings_menu"
+    <TextView android:id="@+id/support"
+        style="@style/settings_menu_item"
         android:text="@string/support"
         app:drawableEndCompat="@drawable/support"/>
 
-    <TextView style="@style/settings_menu"
+    <TextView android:id="@+id/user_agreement"
+        style="@style/settings_menu_item"
         android:text="@string/user_agreement"
         app:drawableEndCompat="@drawable/arrow_forward"/>
 
